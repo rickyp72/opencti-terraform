@@ -4,7 +4,10 @@ resource "tls_private_key" "ssh_private_key" {
   rsa_bits  = 4096
 }
 
-output "tls_private_key" { value = tls_private_key.ssh_private_key.private_key_pem }
+output "tls_private_key" { 
+  value = tls_private_key.ssh_private_key.private_key_pem
+  sensitive = true
+}
 
 # Bootstrap deployment with wrapper script.
 data "template_file" "wrapper_script" {
